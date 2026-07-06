@@ -7,9 +7,27 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-monospace, monospace;
+  --font-heading: var(--font-inter), "Inter", sans-serif;
+  --font-script: var(--font-great-vibes), "Segoe Script", cursive;
+
+  /* Brand tokens — rosa pastel + dorado champagne */
+  --color-page: var(--page);
+  --color-algodon: var(--page);
+  --color-page-soft: var(--page-soft);
+  --color-petal: var(--petal);
+  --color-ink: var(--ink);
+  --color-marron: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-brand: var(--brand);
+  --color-sky: var(--sky);
+  --color-peony: var(--peony);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-watermark: var(--watermark);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -18,11 +36,6 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -49,82 +62,184 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+  /* Palette — rosa pastel + dorado champagne */
+  --page: #fff7fa; /* blanco algodón — fondo general (~40%) */
+  --page-soft: #ffe9f2; /* rosa nube — fondos suaves / descanso (~25%) */
+  --petal: #fecce3; /* rosa pétalo — secciones destacadas / banners (~20%) */
+  --ink: #6b5638; /* marrón dorado — texto (títulos y cuerpo) */
+  --ink-muted: #9a8461; /* marrón atenuado — subtítulos */
+  --brand: #de7ba6; /* rosa frambuesa — botones / CTA (~4%) */
+  --sky: #f6a8c9; /* rosa peonía — pareja de degradado */
+  --peony: #f6a8c9; /* rosa peonía — detalles, iconos, bordes, hover (~6%) */
+  --gold: #c9a15e; /* dorado champagne — detalles finos de lujo (~3%) */
+  --gold-light: #e9d7b8; /* dorado claro — degradados */
+  --gold-dark: #b08a48; /* dorado profundo — degradado metálico */
+  --watermark: rgba(107, 86, 56, 0.14); /* marrón muy tenue para titulares gigantes */
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #fff7fa;
+  --foreground: #6b5638;
+  --card: #ffffff;
+  --card-foreground: #6b5638;
+  --popover: #ffffff;
+  --popover-foreground: #6b5638;
+  --primary: #de7ba6;
+  --primary-foreground: #fff7fa;
+  --secondary: #ffe9f2;
+  --secondary-foreground: #6b5638;
+  --muted: #ffe9f2;
+  --muted-foreground: #9a8461;
+  --accent: rgba(246, 168, 201, 0.18);
+  --accent-foreground: #de7ba6;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(107, 86, 56, 0.12);
+  --input: rgba(107, 86, 56, 0.14);
+  --ring: #de7ba6;
+  --radius: 1rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #6b5638;
+  --sidebar-primary: #de7ba6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffe9f2;
+  --sidebar-accent-foreground: #6b5638;
+  --sidebar-border: rgba(107, 86, 56, 0.12);
+  --sidebar-ring: #de7ba6;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+    -webkit-font-smoothing: antialiased;
   }
+  body {
+    @apply bg-page text-ink;
+    font-weight: 400;
+  }
+  /* Tighten large display type like the source (negative tracking) */
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Lenis smooth scroll (recommended base styles)                    */
+/* ---------------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- */
+/* Scroll-reveal (fade-up) — mirrors the site's GSAP reveals        */
+/* ---------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+/* stagger helpers */
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+.reveal[data-delay="5"] { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Per-character text reveal (portfolio/gallery card titles) — each letter
+   fades + slides up with a stagger once the title enters the viewport. */
+.char-reveal .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.75em);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.char-reveal.is-visible .char {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .char-reveal .char { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------------------------------------------------------------- */
+/* Marquee (infinite horizontal scroll) — services/testimonials/etc */
+/* ---------------------------------------------------------------- */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x var(--marquee-duration, 30s) linear infinite;
+}
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track[data-pause="true"] {
+  animation-play-state: paused;
+}
+
+/* ---------------------------------------------------------------- */
+/* Utility helpers used across sections                             */
+/* ---------------------------------------------------------------- */
+/* Outlined display numbers (Expertise stats) */
+.text-outline {
+  -webkit-text-stroke: 2px var(--ink);
+  color: transparent;
+}
+/* Champagne-gold gradient for fine luxury details (lines, underlines) */
+.gold-gradient {
+  background-image: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+}
+.text-gradient-gold {
+  background: linear-gradient(120deg, var(--gold-dark), var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Gradient text fill (footer wordmark, highlighted words) */
+.text-gradient-brand {
+  background: linear-gradient(90deg, var(--brand), var(--sky));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.brand-gradient {
+  background-image: linear-gradient(135deg, var(--brand), var(--sky));
+}
+/* Fluid clamp helper for the oversized hero/section display type */
+.display-fluid {
+  font-size: clamp(2.75rem, 7vw, 6.72rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
 }

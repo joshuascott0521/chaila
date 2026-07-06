@@ -47,3 +47,33 @@ next-env.d.ts
 
 # Local temp files
 temp/
+
+# OMC internal state
+.omc/
+
+# --- Herramientas del clonador (solo local, fuera del repo del sitio) ---
+.aider.conf.yml
+.amazonq/
+.augment/
+.claude/
+.clinerules
+.codex/
+.continue/
+.cursor/
+.gemini/
+.github/
+.opencode/
+.windsurf/
+.windsurfrules
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+CHANGELOG.md
+LICENSE
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+.dockerignore
+docs/
+scripts/
+src/app/imgs/

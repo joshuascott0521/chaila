@@ -1,30 +1,31 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Services } from "@/components/Services";
-import { Process } from "@/components/Process";
-import { Portfolio } from "@/components/Portfolio";
+import { AboutIntro } from "@/components/AboutIntro";
 import { Expertise } from "@/components/Expertise";
 import { Awards } from "@/components/Awards";
+import { AboutStatement } from "@/components/AboutStatement";
+import { Team } from "@/components/Team";
 import { Testimonials } from "@/components/Testimonials";
-import { Pricing } from "@/components/Pricing";
 import { CallToAction } from "@/components/CallToAction";
 import { Footer } from "@/components/Footer";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Sobre nosotras — Chaila Beauty Nails",
+  description:
+    "Conoce al equipo detrás de Chaila Beauty Nails y nuestra forma de trabajar.",
+};
+
+export default function AboutPage() {
   return (
     <>
       <Navbar />
       <main className="relative">
-        <Hero />
-        <About />
-        <Services />
-        <Process />
-        <Portfolio />
+        <AboutIntro />
         <Expertise />
         <Awards />
+        <AboutStatement />
+        <Team />
         <Testimonials />
-        <Pricing />
         <CallToAction />
       </main>
       <Footer />
