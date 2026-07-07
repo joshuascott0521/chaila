@@ -28,17 +28,23 @@ export interface Testimonial {
   quote: string;
   name: string;
   role: string;
-  avatar: string;
+  /** foto opcional; si falta se muestra un círculo con la inicial */
+  avatar?: string;
+  /** estrellas 1-5; si falta se asume 5 */
+  rating?: number;
+  /** fecha ISO (yyyy-mm-dd) de envíos del formulario */
+  date?: string;
 }
 
 export interface PricingPlan {
   name: string;
   description: string;
   price: string;
-  period: string; // "/Monthly" | "/One Time"
+  period: string; // e.g. " COP"
   features: string[];
   cta: string;
-  featured: boolean; // blue (true) vs white (false)
+  ctaHref: string; // WhatsApp booking link
+  featured: boolean; // pink (true) vs white (false)
 }
 
 export interface SocialLink {

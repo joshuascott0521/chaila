@@ -8,6 +8,7 @@ import type {
   PricingPlan,
   SocialLink,
 } from "@/types";
+import testimonialsData from "@/data/testimonials.json";
 
 /** All copy + asset references extracted verbatim from unleay.webflow.io */
 
@@ -27,14 +28,13 @@ export const HERO = {
   // WhatsApp de reservas: +57 323 4664031 (con mensaje pre-rellenado)
   whatsappHref:
     "https://wa.me/573234664031?text=Hola%20Chaila%2C%20quiero%20reservar%20una%20cita%20de%20u%C3%B1as.",
-  partners: ["NALIRA", "VELIX", "KLKRO"],
 };
 
 export const ABOUT = {
-  // "Studio Unleay" is rendered in brand blue, the rest in ink.
-  highlight: "Studio Unleay",
-  headingRest: " is a creative studio focused on design and visual storytelling",
-  subtext: "Rooted in California. Designed for global impact.",
+  // "Chaila Beauty Nails" is rendered in brand pink, the rest in ink.
+  highlight: "Chaila Beauty Nails",
+  headingRest: " es un estudio de uñas dedicado al cuidado, el detalle y los diseños que enamoran",
+  subtext: "Todos nuestros servicios incluyen exfoliación.",
 };
 
 export const ABOUT_PAGE = {
@@ -62,34 +62,34 @@ export const ABOUT_PAGE = {
 };
 
 export const SERVICES: ServiceCard[] = [
-  { title: "BRANDING", image: "/images/service-branding.webp" },
-  { title: "DESIGN UX/UI", image: "/images/service-design.webp" },
-  { title: "DEVELOPMENT", image: "/images/service-development.webp" },
+  { title: "SEMIPERMANENTE", image: "/images/work-semipermanente.jpg" },
+  { title: "ACRÍLICAS", image: "/images/work-acrilico.jpg" },
+  { title: "POLY GEL", image: "/images/work-poly-gel.webp" },
 ];
 
 export const PROCESS = {
   subtitle:
-    "After hundreds of projects, we've refined a clear, effective process designed to make every step simple, transparent, and easy to follow.",
+    "Así es una cita en Chaila: un proceso sencillo y transparente, pensado para que solo te preocupes por disfrutar el resultado.",
   steps: [
     {
-      title: "Planning",
+      title: "Reserva tu cita",
       description:
-        "We analyze the project goals, target audience, and requirements. This phase defines the scope, features, timeline, and technical strategy to ensure a solid foundation.",
+        "Escríbenos por WhatsApp, cuéntanos qué servicio quieres y elige el horario que mejor te convenga. Te confirmamos de inmediato.",
     },
     {
-      title: "User Experience",
+      title: "Preparación y exfoliación",
       description:
-        "We create wireframes and visual designs focused on usability and aesthetics. The goal is to deliver an intuitive, engaging user experience aligned with the brand.",
+        "Comenzamos con la limpieza y preparación de tus uñas. Todos nuestros servicios incluyen exfoliación, para que tus manos queden suaves y cuidadas.",
     },
     {
-      title: "Implementation",
+      title: "Diseño",
       description:
-        "We build the website using modern technologies and best practices. This includes frontend and backend development, integrations, and performance optimization.",
+        "Aplicamos la técnica que elegiste — semipermanente, acrílicas, poly gel y más — con dedicación en cada detalle para lograr el diseño que quieres.",
     },
     {
-      title: "Deployment",
+      title: "Acabado y cuidado",
       description:
-        "We test the website across devices and browsers, fix issues, and prepare for launch. After deployment, we provide ongoing maintenance and improvements.",
+        "Sellamos el trabajo con un acabado impecable y te damos recomendaciones para que tus uñas luzcan perfectas por más tiempo.",
     },
   ] satisfies ProcessStep[],
 };
@@ -108,81 +108,88 @@ export const PROJECTS: Project[] = [
 
 export const EXPERTISE = {
   subtitle:
-    "We handle every stage of digital projects, applying clear, efficient methods to deliver high-quality, reliable results at every stage.",
+    "Cuidamos cada etapa de tu servicio, desde la preparación hasta el acabado, para que el resultado sea impecable y dure más.",
+  // ⚠️ Placeholder: reemplazar con números reales cuando el cliente los confirme.
   stats: [
-    { value: "98", suffix: "+", label: "Clients worldwide" },
-    { value: "20", suffix: "+", label: "Years of Experience" },
-    { value: "95", suffix: "%", label: "Client Satisfaction" },
+    { value: "7", suffix: "+", label: "Técnicas de uñas" },
+    { value: "100", suffix: "%", label: "Servicios con exfoliación incluida" },
+    { value: "100", suffix: "%", label: "Diseños hechos a tu medida" },
   ] satisfies Stat[],
 };
 
 export const AWARDS = {
-  heading: "Awards",
-  trophy: "/images/trophy.png",
+  heading: "Calidad",
+  trophy: "/images/esmalte.png",
   items: [
-    "🏆 Creative Excellence Award 2017",
-    "🏆 Brand Impact Award 2022",
-    "🏆 Digital Experience Award 2025",
+    { icon: "sparkle", label: "Exfoliación incluida en todos los servicios" },
+    { icon: "polish", label: "Diseños personalizados" },
+    { icon: "whatsapp", label: "Reserva fácil por WhatsApp" },
   ],
-};
+} as const;
 
-const TESTIMONIAL_QUOTE =
-  "Unleay brought my ideas to life with remarkable clarity and creativity. Their animations combine precision and artistry, communicating concepts and emotions far beyond what words alone could achieve.";
-
+// Los testimonios viven en src/data/testimonials.json. El formulario /testimonio
+// agrega entradas nuevas automáticamente (commit al repo → redeploy en Vercel).
 export const TESTIMONIALS = {
   subtitle:
-    "Client testimonials reflect trust, collaboration, and results, built through a clear, transparent process focused on quality and long-term success.",
-  items: [
-    { quote: TESTIMONIAL_QUOTE, name: "Cris Evans", role: "Veauly Lead", avatar: "/images/avatar-1.jpg" },
-    { quote: TESTIMONIAL_QUOTE, name: "Marty Clue", role: "Natale CEO", avatar: "/images/avatar-2.jpg" },
-    { quote: TESTIMONIAL_QUOTE, name: "John Clewi", role: "Marketing Coordinator", avatar: "/images/avatar-3.jpg" },
-    { quote: TESTIMONIAL_QUOTE, name: "Zaire Amari", role: "Marketing Lead", avatar: "/images/avatar-1.jpg" },
-    { quote: TESTIMONIAL_QUOTE, name: "Nora Leiva", role: "Product Lead", avatar: "/images/avatar-2.jpg" },
-  ] satisfies Testimonial[],
+    "Lo que dicen nuestras clientas después de pasar por las manos de Chaila.",
+  items: testimonialsData as Testimonial[],
 };
+
+/** Reserva por WhatsApp con el servicio prellenado (usado por las tarjetas de precios). */
+function pricingWhatsappHref(service: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    `Hola Chaila, quiero reservar: ${service}.`
+  )}`;
+}
 
 export const PRICING: PricingPlan[] = [
   {
-    name: "Subscription",
-    description: "For teams needing on-demand, fast design support. Unlimited requests. One flat fee.",
-    price: "$4,899",
-    period: "/Monthly",
-    features: [
-      "One task handled at a time",
-      "Ongoing collaboration with expert designers",
-      "Quick delivery focused on quality",
-      "Endless design tasks as needed",
-      "Monthly workload scaled to your needs",
-      "Continuous creative oversight",
-      "Choose how you stay in touch",
-      "Webflow builds included at no cost",
-    ],
-    cta: "Subscribe",
+    name: "Semipermanente",
+    description: "Esmaltado en gel de larga duración con acabado brillante.",
+    price: "$35.000",
+    period: " COP",
+    features: ["Incluye exfoliación", "Reserva por WhatsApp"],
+    cta: "Reservar",
+    ctaHref: pricingWhatsappHref("Semipermanente"),
     featured: true,
   },
   {
-    name: "One Page",
-    description: "For founders who need a full website launched in days, not months. Clear scope Pro.",
-    price: "$1,480",
-    period: "/One Time",
-    features: [
-      "Tailored page structures from scratch",
-      "Design aligned to your visual identity",
-      "Optimized layouts for every screen",
-      "Source files and design documentation",
-      "Fast feedback cycles under 48 hours",
-      "Refinements until final approval",
-      "Extra pages available on request (+$200)",
-      "Project-based email assistance",
-    ],
-    cta: "Subscribe",
+    name: "Acrílicas",
+    description: "Extensión y esculpido en acrílico para uñas fuertes y duraderas.",
+    price: "$60.000",
+    period: " COP",
+    features: ["Incluye exfoliación", "Reserva por WhatsApp"],
+    cta: "Reservar",
+    ctaHref: pricingWhatsappHref("Acrílicas"),
+    featured: false,
+  },
+  {
+    name: "Poly gel",
+    description: "La fuerza del acrílico con la flexibilidad del gel.",
+    price: "$70.000",
+    period: " COP",
+    features: ["Incluye exfoliación", "Reserva por WhatsApp"],
+    cta: "Reservar",
+    ctaHref: pricingWhatsappHref("Poly gel"),
+    featured: false,
+  },
+  {
+    name: "Pedicure",
+    description: "Cuidado completo de pies con esmaltado y un momento de relajación.",
+    price: "$20.000",
+    period: " COP",
+    features: ["Incluye exfoliación", "Reserva por WhatsApp"],
+    cta: "Reservar",
+    ctaHref: pricingWhatsappHref("Pedicure"),
     featured: false,
   },
 ];
 
+export const PRICING_NOTE = "Todos los servicios incluyen exfoliación.";
+
 export const CTA = {
-  heading: "The first step matters",
-  button: "Contact",
+  heading: "Reserva tu cita hoy",
+  button: "Escríbenos",
 };
 
 export const FOOTER = {

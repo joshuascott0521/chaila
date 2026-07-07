@@ -2,7 +2,7 @@ import { PROCESS } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 
 /**
- * Process — scroll-driven sticky-stacking cards, built with pure CSS
+ * Proceso — scroll-driven sticky-stacking cards, built with pure CSS
  * `position: sticky`. Each card wrapper pins near the top of the viewport;
  * scrolling past it lets the next card slide up and cover it, building the
  * stack. No client JS is needed for the effect itself.
@@ -13,7 +13,7 @@ export function Process() {
       <div className="mx-auto mb-16 flex w-full max-w-[1240px] flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between md:px-10">
         <Reveal>
           <h2 className="text-[clamp(2.25rem,4vw,3.84rem)] font-medium text-ink">
-            Process
+            Proceso
           </h2>
         </Reveal>
         <Reveal delay={1} className="max-w-[440px] text-left md:text-right">

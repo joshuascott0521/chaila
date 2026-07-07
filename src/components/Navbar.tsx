@@ -38,7 +38,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
           className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[rgba(246,168,201,0.2)] text-ink md:hidden"
         >

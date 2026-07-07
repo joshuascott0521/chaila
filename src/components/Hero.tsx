@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { RollUpLabel } from "@/components/RollUpLabel";
 import { WhatsAppIcon, ArrowRight } from "@/components/icons";
 import { HERO } from "@/lib/content";
 
@@ -65,16 +66,16 @@ export function Hero() {
             href={HERO.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="brand-gradient inline-flex items-center gap-2.5 rounded-full px-7 py-[18px] text-base font-medium tracking-[0.4px] text-white shadow-[0_10px_24px_rgba(222,123,166,0.35)] transition duration-300 hover:scale-[1.03] hover:brightness-110"
+            className="brand-gradient group inline-flex items-center gap-2.5 rounded-full px-7 py-[18px] text-base font-medium tracking-[0.4px] text-white shadow-[0_10px_24px_rgba(222,123,166,0.35)] transition duration-300 hover:scale-[1.03] hover:brightness-110"
           >
             <WhatsAppIcon className="h-5 w-5" />
-            {HERO.ctaPrimary}
+            <RollUpLabel>{HERO.ctaPrimary}</RollUpLabel>
           </a>
           <a
             href="#portfolio"
             className="group inline-flex items-center gap-2 rounded-full border border-[rgba(201,161,94,0.55)] bg-white/80 px-7 py-[18px] text-base font-medium tracking-[0.4px] text-ink backdrop-blur-sm transition duration-300 hover:scale-[1.03] hover:border-brand hover:text-brand"
           >
-            {HERO.ctaSecondary}
+            <RollUpLabel>{HERO.ctaSecondary}</RollUpLabel>
             <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </Reveal>

@@ -206,6 +206,9 @@ html.lenis body {
 .marquee:hover .marquee-track[data-pause="true"] {
   animation-play-state: paused;
 }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
 
 /* ---------------------------------------------------------------- */
 /* Utility helpers used across sections                             */

@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { RollUpLabel } from "@/components/RollUpLabel";
 import { CTA, HERO } from "@/lib/content";
 
 /**
@@ -20,9 +21,9 @@ export function CallToAction() {
               href={HERO.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-white px-12 py-6 text-[clamp(1.25rem,2vw,32px)] font-semibold text-ink transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+              className="group rounded-full bg-white px-12 py-6 text-[clamp(1.25rem,2vw,32px)] font-semibold text-ink transition-transform duration-300 hover:scale-105 hover:shadow-xl"
             >
-              {CTA.button}
+              <RollUpLabel>{CTA.button}</RollUpLabel>
             </a>
         </Reveal>
       </div>

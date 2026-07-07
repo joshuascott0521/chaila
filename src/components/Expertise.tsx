@@ -13,7 +13,7 @@ export function Expertise() {
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <Reveal>
             <h2 className="text-[clamp(2.25rem,4vw,3.84rem)] font-medium uppercase leading-[1.1] tracking-[-0.02em] text-ink">
-              Expertise
+              Experiencia
             </h2>
           </Reveal>
           <Reveal delay={1} className="max-w-[420px] text-lg text-ink/70 md:text-right">

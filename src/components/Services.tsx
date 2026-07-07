@@ -5,7 +5,7 @@ const BAND_REPEAT = 8;
 const LABEL_REPEAT = 6;
 
 /**
- * Services section — a giant "Services *" band marquee overlapping a row of
+ * Services section — a giant "Servicios *" band marquee overlapping a row of
  * three image cards, each carrying its own looping label marquee. Both
  * marquees are pure CSS (`.marquee` / `.marquee-track` in globals.css), so
  * this component needs no client JS.
@@ -18,10 +18,10 @@ export function Services() {
       className="services relative overflow-x-clip bg-page py-16 md:py-24"
     >
       <h2 id="services-heading" className="sr-only">
-        Services
+        Servicios
       </h2>
 
-      {/* Layer 1 — giant faint "Services *" band, sitting just above the cards */}
+      {/* Layer 1 — giant faint "Servicios *" band, sitting just above the cards */}
       <Reveal className="relative z-0 mb-[-2.5rem] overflow-hidden md:mb-[-4rem]">
         <div
           aria-hidden="true"
@@ -36,7 +36,7 @@ export function Services() {
                     key={i}
                     className="pr-[0.3em] text-[clamp(6rem,23vw,360px)] leading-[0.9] font-medium whitespace-nowrap text-watermark select-none"
                   >
-                    Services *
+                    Servicios *
                   </span>
                 ))}
               </div>
@@ -71,7 +71,7 @@ export function Services() {
                     {Array.from({ length: LABEL_REPEAT }).map((_, j) => (
                       <span
                         key={j}
-                        className="flex items-center text-[clamp(1.75rem,3.7vw,57.8px)] font-medium whitespace-nowrap text-white uppercase"
+                        className="flex items-center text-[clamp(1.75rem,3.7vw,57.8px)] font-medium whitespace-nowrap text-white uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.45)]"
                       >
                         {service.title}
                         <span className="mx-[0.4em] text-white">·</span>

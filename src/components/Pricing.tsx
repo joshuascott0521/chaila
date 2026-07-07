@@ -1,12 +1,13 @@
 import { Reveal } from "@/components/Reveal";
+import { RollUpLabel } from "@/components/RollUpLabel";
 import { CheckIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { PRICING } from "@/lib/content";
+import { PRICING, PRICING_NOTE } from "@/lib/content";
 
 /**
- * "Pricing" section — two plan cards (Subscription / One Page). Cards are
- * equal height via `items-stretch`; each CTA is pinned to the bottom with
- * `mt-auto` regardless of how many feature lines precede it.
+ * "Precios" section — one card per service. Cards are equal height via
+ * `items-stretch`; each CTA is pinned to the bottom with `mt-auto`
+ * regardless of how many feature lines precede it.
  */
 export function Pricing() {
   return (
@@ -14,7 +15,7 @@ export function Pricing() {
       <div className="mx-auto max-w-[1160px] px-6 md:px-10">
         <Reveal className="mb-16 text-center">
           <h2 className="text-[clamp(2rem,3.5vw,46px)] font-medium uppercase text-ink">
-            Pricing
+            Precios
           </h2>
         </Reveal>
 
@@ -45,7 +46,7 @@ export function Pricing() {
                 )}
               />
 
-              <p className="mb-5 text-sm font-bold">What&apos;s included</p>
+              <p className="mb-5 text-sm font-bold">Incluye</p>
               <ul className="flex flex-col gap-4">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-3">
@@ -62,18 +63,22 @@ export function Pricing() {
                 ))}
               </ul>
 
-              <button
-                type="button"
+              <a
+                href={plan.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
-                  "mt-auto rounded-full py-4 text-center font-semibold transition hover:brightness-110",
+                  "group mt-auto rounded-full py-4 text-center font-semibold transition hover:brightness-110",
                   plan.featured ? "bg-white text-brand" : "bg-brand text-white"
                 )}
               >
-                {plan.cta}
-              </button>
+                <RollUpLabel>{plan.cta}</RollUpLabel>
+              </a>
             </Reveal>
           ))}
         </div>
+
+        <p className="mt-10 text-center text-lg font-medium text-ink">{PRICING_NOTE}</p>
       </div>
     </section>
   );
