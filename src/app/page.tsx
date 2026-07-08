@@ -10,21 +10,28 @@ import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
 import { CallToAction } from "@/components/CallToAction";
 import { Footer } from "@/components/Footer";
+import { getGallery, getPricing, getServices } from "@/lib/sanity";
 
-export default function Home() {
+export default async function Home() {
+  const [services, projects, pricing] = await Promise.all([
+    getServices(),
+    getGallery(),
+    getPricing(),
+  ]);
+
   return (
     <>
       <Navbar />
       <main className="relative">
         <Hero />
         <About />
-        <Services />
+        <Services services={services} />
         <Process />
-        <Portfolio />
+        <Portfolio projects={projects} />
         <Expertise />
         <Awards />
         <Testimonials />
-        <Pricing />
+        <Pricing plans={pricing.plans} note={pricing.note} />
         <CallToAction />
       </main>
       <Footer />

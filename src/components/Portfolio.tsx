@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { PROJECTS, WHATSAPP_NUMBER } from "@/lib/content";
+import { WHATSAPP_NUMBER } from "@/lib/content";
+import type { Project } from "@/types";
 
 /** Max horizontal drift (px) applied to the grid as the section scrolls through view. */
 const DRIFT_RANGE = 80;
@@ -38,7 +39,7 @@ function AnimatedTitle({ text }: { text: string }) {
  * centered (revealing letter-by-letter) with a pill beneath it, and books via
  * WhatsApp. On mobile it collapses to a 1/2-column grid and the drift is off.
  */
-export function Portfolio() {
+export function Portfolio({ projects }: { projects: Project[] }) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
 
@@ -116,7 +117,7 @@ export function Portfolio() {
           ref={gridRef}
           className="grid w-full grid-cols-1 gap-6 px-6 sm:grid-cols-2 md:w-max md:shrink-0 md:grid-cols-4 md:gap-[46px] md:px-0"
         >
-          {PROJECTS.map((project) => (
+          {projects.map((project) => (
             <a
               key={project.title}
               href={bookingHref(project.title)}

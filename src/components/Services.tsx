@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/Reveal";
-import { SERVICES } from "@/lib/content";
+import type { ServiceCard } from "@/types";
 
 const BAND_REPEAT = 8;
 const LABEL_REPEAT = 6;
@@ -10,7 +10,7 @@ const LABEL_REPEAT = 6;
  * marquees are pure CSS (`.marquee` / `.marquee-track` in globals.css), so
  * this component needs no client JS.
  */
-export function Services() {
+export function Services({ services }: { services: ServiceCard[] }) {
   return (
     <section
       id="services"
@@ -47,10 +47,10 @@ export function Services() {
 
       {/* Layer 2 — three image cards, each with a per-card label marquee */}
       <div className="relative z-10 mx-auto grid max-w-[1240px] grid-cols-1 gap-4 px-4 md:grid-cols-3">
-        {SERVICES.map((service, i) => (
+        {services.map((service, i) => (
           <Reveal
             key={service.title}
-            delay={(i + 1) as 1 | 2 | 3}
+            delay={Math.min(i + 1, 5) as 1 | 2 | 3 | 4 | 5}
             className="group relative aspect-[3/4] overflow-hidden rounded-2xl md:aspect-auto md:h-[640px]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}

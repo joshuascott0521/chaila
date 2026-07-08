@@ -2,14 +2,14 @@ import { Reveal } from "@/components/Reveal";
 import { RollUpLabel } from "@/components/RollUpLabel";
 import { CheckIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { PRICING, PRICING_NOTE } from "@/lib/content";
+import type { PricingPlan } from "@/types";
 
 /**
  * "Precios" section — one card per service. Cards are equal height via
  * `items-stretch`; each CTA is pinned to the bottom with `mt-auto`
  * regardless of how many feature lines precede it.
  */
-export function Pricing() {
+export function Pricing({ plans, note }: { plans: PricingPlan[]; note: string }) {
   return (
     <section className="pricing-section bg-page-soft py-20 md:py-28">
       <div className="mx-auto max-w-[1160px] px-6 md:px-10">
@@ -20,10 +20,10 @@ export function Pricing() {
         </Reveal>
 
         <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
-          {PRICING.map((plan, i) => (
+          {plans.map((plan, i) => (
             <Reveal
               key={plan.name}
-              delay={(i + 1) as 1 | 2}
+              delay={Math.min(i + 1, 5) as 1 | 2 | 3 | 4 | 5}
               className={cn(
                 "flex flex-col rounded-[22px] p-8 md:p-10",
                 plan.featured
@@ -78,7 +78,7 @@ export function Pricing() {
           ))}
         </div>
 
-        <p className="mt-10 text-center text-lg font-medium text-ink">{PRICING_NOTE}</p>
+        <p className="mt-10 text-center text-lg font-medium text-ink">{note}</p>
       </div>
     </section>
   );
