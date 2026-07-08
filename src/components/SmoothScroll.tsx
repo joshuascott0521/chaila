@@ -1,32 +1,59 @@
 "use client";
 
 import { useEffect } from "react";
-import Lenis from "lenis";
+
+const DURATION_MS = 1200;
+const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
 /**
- * Global Lenis smooth-scroll provider (the source site uses lenis@1.1.20).
- * Because Lenis manages the scroll position, native `#hash` anchor jumps don't
- * work on their own — so we intercept same-page anchor links and drive
- * `lenis.scrollTo` instead (and honor a hash present on initial load).
+ * Scroll suave para la navegación por anclas del menú (`/#services`,
+ * `/#portfolio`, `/#contact`) e "Inicio" (subir al tope sin recargar).
+ *
+ * La animación se hace por JS con pasos instantáneos de `window.scrollTo`
+ * en requestAnimationFrame: el scroll suave nativo (CSS `scroll-behavior`,
+ * `scrollIntoView({behavior:"smooth"})` y Lenis) no funciona en esta página,
+ * así que este es el camino confiable. Respeta `prefers-reduced-motion`
+ * (salto directo) y el usuario puede interrumpir con la rueda o el dedo.
  */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
-
     let rafId = 0;
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
 
-    // Smoothly resolve in-page anchor links (Lenis-aware).
+    const cancel = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+    };
+
+    function animateTo(targetY: number) {
+      cancel();
+      const maxY = document.documentElement.scrollHeight - window.innerHeight;
+      const to = Math.max(0, Math.min(targetY, maxY));
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.scrollTo(0, to);
+        return;
+      }
+      const from = window.scrollY;
+      if (Math.abs(to - from) < 1) return;
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / DURATION_MS);
+        window.scrollTo(0, from + (to - from) * easeOutExpo(t));
+        rafId = t < 1 ? requestAnimationFrame(step) : 0;
+      };
+      rafId = requestAnimationFrame(step);
+    }
+
+    // La rueda o un toque del usuario interrumpen la animación.
+    const interrupt = () => cancel();
+    window.addEventListener("wheel", interrupt, { passive: true });
+    window.addEventListener("touchstart", interrupt, { passive: true });
+
     const onClick = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0) return;
+      // Ctrl/Cmd+clic abre en otra pestaña: no interceptar.
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const anchor = (event.target as HTMLElement | null)?.closest?.("a");
       const href = anchor?.getAttribute("href");
       if (!anchor || !href) return;
@@ -37,39 +64,39 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       } catch {
         return;
       }
-      // Only handle links that stay on the current page.
       if (url.origin !== window.location.origin) return;
       if (url.pathname !== window.location.pathname) return;
 
       if (url.hash) {
-        const target = document.querySelector(url.hash);
+        const target = document.querySelector<HTMLElement>(url.hash);
         if (!target) return;
         event.preventDefault();
-        lenis.scrollTo(target as HTMLElement, { offset: 0 });
+        animateTo(target.getBoundingClientRect().top + window.scrollY);
         window.history.pushState(null, "", url.hash);
       } else {
-        // e.g. "Inicio" (href="/") while already on home → scroll to top.
+        // "Inicio" (href="/") estando ya en la home → subir al tope.
         event.preventDefault();
-        lenis.scrollTo(0);
+        animateTo(0);
         window.history.pushState(null, "", url.pathname);
       }
     };
     document.addEventListener("click", onClick);
 
-    // Honor a hash present on initial load (e.g. arriving at "/#services").
+    // Honra un hash presente al cargar (p. ej. llegar directo a "/#services").
     if (window.location.hash) {
-      const target = document.querySelector(window.location.hash);
+      const target = document.querySelector<HTMLElement>(window.location.hash);
       if (target) {
         requestAnimationFrame(() =>
-          lenis.scrollTo(target as HTMLElement, { offset: 0, immediate: false })
+          animateTo(target.getBoundingClientRect().top + window.scrollY)
         );
       }
     }
 
     return () => {
-      cancelAnimationFrame(rafId);
+      cancel();
       document.removeEventListener("click", onClick);
-      lenis.destroy();
+      window.removeEventListener("wheel", interrupt);
+      window.removeEventListener("touchstart", interrupt);
     };
   }, []);
 
