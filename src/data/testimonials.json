@@ -12,26 +12,5 @@
     "role": "Acrílicas",
     "rating": 5,
     "date": "2026-07-08"
-  },
-  {
-    "quote": "Quedé encantada con mis uñas. Se nota el cuidado en cada detalle y la exfoliación deja las manos divinas.",
-    "name": "Clienta de Chaila",
-    "role": "Semipermanente",
-    "avatar": "/images/avatar-1.jpg",
-    "rating": 5
-  },
-  {
-    "quote": "El diseño quedó exactamente como lo quería y duró muchísimo. Atención de primera de principio a fin.",
-    "name": "Clienta de Chaila",
-    "role": "Acrílicas",
-    "avatar": "/images/avatar-2.jpg",
-    "rating": 5
-  },
-  {
-    "quote": "Salí feliz con mi pedicure, un momento de relajación completo. Sin duda vuelvo a reservar.",
-    "name": "Clienta de Chaila",
-    "role": "Pedicure",
-    "avatar": "/images/avatar-3.jpg",
-    "rating": 5
   }
 ]
